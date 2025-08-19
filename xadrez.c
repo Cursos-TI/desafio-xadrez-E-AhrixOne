@@ -1,52 +1,60 @@
 #include <stdio.h>
 
-//Declaração de variaveis
+// Funções recursivas
+
+// Torre
+void moverTorre(int casas) {
+    if (casas <= 0) return; 
+    printf("Direita\n");
+    moverTorre(casas - 1);  
+}
+
+// Rainha
+void moverRainha(int casas) {
+    if (casas <= 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// Bispo
+void moverBispo(int vertical, int horizontal) {
+    if (vertical <= 0) return;
+    for (int h = 0; h < horizontal; h++) {
+        printf("Cima Direita\n");
+    }
+    moverBispo(vertical - 1, horizontal);
+}
 
 int main(void) {
     const int casasTorre = 5;
-    const int casasBispo = 5;
+    const int casasBispoVertical = 5;
+    const int casasBispoHorizontal = 1;
     const int casasRainha = 8;
-    const int casasBaixo = 2;
-    const int casasEsquerda = 1;
+    const int casasCavaloVertical = 2;  
+    const int casasCavaloHorizontal = 1; 
 
-// Movimentação da Torre
-
+    // Movimentação da Torre
     printf("Movimento da Torre:\n");
-    for (int i = 0; i < casasTorre; i++) {
-        printf("Direita\n");
-    }
+    moverTorre(casasTorre);
 
-// Movimentação do Bispo
-
+    // Movimentação do Bispo
     printf("\nMovimento do Bispo:\n");
-    int i = 0;
-    while (i < casasBispo) {
-        printf("Cima Direita\n");
-        i++;
-    }
+    moverBispo(casasBispoVertical, casasBispoHorizontal);
 
-// Movimentação da Rainha
-
+    // Movimentação da Rainha
     printf("\nMovimento da Rainha:\n");
-    int j = 0;
-    do {
-        printf("Esquerda\n");
-        j++;
-    } while (j < casasRainha);
+    moverRainha(casasRainha);
 
-// Movimentação do Cavalo
-
+    // Movimentação do Cavalo
     printf("\nMovimento do Cavalo:\n");
-    for (int k = 0; k < casasBaixo; k++) {
-        printf("Baixo\n");
+    for (int v = 0; v < casasCavaloVertical; v++) {
+        printf("Cima\n");
     }
-    int m = 0;
-    while (m < casasEsquerda) {
-        printf("Esquerda\n");
-        m++;
+    int h = 0;
+    while (h < casasCavaloHorizontal) {
+        printf("Direita\n");
+        h++;
     }
-
-//  Finalizar Execução
 
     return 0;
 }
